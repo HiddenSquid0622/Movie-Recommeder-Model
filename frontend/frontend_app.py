@@ -17,7 +17,9 @@ if st.button("Get Recommendations"):
     else:
         payload = {"movie_name": movie_name, "n": int(num_recommend)}
         try:
-            res = requests.post("http://127.0.0.1:8000/recommend", json=payload)
+            res = requests.post(
+                "https://movie-recommeder-model.onrender.com", json=payload
+            )
             if res.status_code == 200:
                 data = res.json()
                 recs = data.get("recommended_movies", [])
